@@ -13,6 +13,6 @@ class InertiaExampleController < InertiaController
   end
 
   def test
-    redirect_to inertia_example_url
+    render inertia: "inertia_example/test"
   end
 end

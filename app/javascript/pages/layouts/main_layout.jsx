@@ -1,6 +1,30 @@
 import { Link, router } from "@inertiajs/react";
 
 export default function MainLayout({ children }) {
+  function logout() {
+    const form = document.createElement("form");
+    form.method = "POST";
+    form.action = "/users/sign_out";
+
+    const method = document.createElement("input");
+    method.type = "hidden";
+    method.name = "_method";
+    method.value = "delete";
+
+    const token = document.createElement("input");
+    token.type = "hidden";
+    token.name = "authenticity_token";
+    token.value = document
+      .querySelector('meta[name="csrf-token"]')
+      .getAttribute("content");
+
+    form.appendChild(method);
+    form.appendChild(token);
+
+    document.body.appendChild(form);
+    form.submit();
+  }
+
   return (
     <>
       <header style={{ backgroundColor: "rebeccapurple" }}>
@@ -16,7 +40,7 @@ export default function MainLayout({ children }) {
         >
           <Link href="test">Test</Link>
           <Link href="/">Home</Link>
-          <Link href="users/sign_out" method="delete" as="button">Log out</Link>
+          <button onClick={logout}>Logout</button>
         </nav>
       </header>
       <main>{children}</main>

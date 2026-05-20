@@ -6,6 +6,7 @@ import inertiaSvg from '/assets/inertia.svg'
 import reactSvg from '/assets/react.svg'
 
 import cs from './index.module.css'
+import MainLayout from '../layouts/main_layout'
 
 export default function InertiaExample({ rails_version, ruby_version, rack_version, inertia_rails_version }) {
   return (
@@ -54,3 +55,5 @@ export default function InertiaExample({ rails_version, ruby_version, rack_versi
     </div>
   )
 }
+
+InertiaExample.layout = (page) => <MainLayout children={page}/>

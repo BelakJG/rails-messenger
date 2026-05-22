@@ -1,4 +1,6 @@
-import { Link, router } from "@inertiajs/react";
+import { Link, router, usePage } from "@inertiajs/react";
+import default_profile from "/assets/default_profile.svg";
+import "./layout.main.css"
 
 export default function MainLayout({ children }) {
   function logout() {
@@ -25,6 +27,9 @@ export default function MainLayout({ children }) {
     form.submit();
   }
 
+  const {auth} = usePage().props
+  const user_friends = auth.user.friends.map((friend) => <img src={default_profile} key={friend.id}></img>)
+
   return (
     <>
       <header style={{ backgroundColor: "rebeccapurple" }}>
@@ -43,7 +48,12 @@ export default function MainLayout({ children }) {
           <button onClick={logout}>Logout</button>
         </nav>
       </header>
-      <main>{children}</main>
+      <main>
+        <div id="sidebar">
+          {user_friends}
+        </div>  
+        {children}
+      </main>
     </>
   );
 }

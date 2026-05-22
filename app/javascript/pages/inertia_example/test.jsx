@@ -15,7 +15,7 @@ export default function Test() {
     }
     const other_users = users.map(user => <div className="user" key={user.id}>
         <p>{user.email}</p>
-        {is_friend(user.id) ? <button onClick={() => add_friend(user.id)}>Add Friend</button> : <button>Remove Friend</button>}
+        {!is_friend(user.id) ? <button onClick={() => add_friend(user.id)}>Add Friend</button> : <button>Remove Friend</button>}
     </div>);
     return(<div id="test-content">{other_users}</div>);
 }

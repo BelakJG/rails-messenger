@@ -18,7 +18,8 @@ class ApplicationController < ActionController::Base
         {
           id: current_user.id,
           email: current_user.email,
-          friends: current_user.friends
+          friends: current_user.friends,
+          pending: current_user.pending_friends
         } : nil
       }
     }

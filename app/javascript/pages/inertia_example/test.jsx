@@ -13,9 +13,14 @@ export default function Test() {
     function is_friend(friend_id) {
         return auth.user.friends.some(user => user.id === friend_id);
     }
+    function is_pending(friend_id) {
+        return auth.user.pending.some(user => user.id === friend_id);
+    }
     const other_users = users.map(user => <div className="user" key={user.id}>
         <p>{user.email}</p>
-        {!is_friend(user.id) ? <button onClick={() => add_friend(user.id)}>Add Friend</button> : <button>Remove Friend</button>}
+        {is_pending(user.id) ? <button onClick={() => add_friend(user.id)}>Accept Friend</button>
+        : !is_friend(user.id) ? <button onClick={() => add_friend(user.id)}>Add Friend</button>
+        : <button>Remove Friend</button>}
     </div>);
     return(<div id="test-content">{other_users}</div>);
 }

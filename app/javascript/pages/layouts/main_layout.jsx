@@ -28,8 +28,8 @@ export default function MainLayout({ children }) {
   }
 
   const {auth} = usePage().props
-  const user_friends = auth.user.friends.map((friend) => <div className="user-profile">
-    <img src={default_profile} key={friend.id} />
+  const user_friends = auth.user.friends.map((friend) => <div className="user-profile" key={friend.id}>
+    <img src={default_profile} />
     <p>{friend.email.charAt(0).toUpperCase()}</p>
   </div>)
 

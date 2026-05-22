@@ -2,9 +2,9 @@ class FriendshipsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    current_user.friendships.create!(friend_id: params[:friend_id])
+    current_user.friendships.create!(friendship_params)
 
-    redirect_to root_path
+    redirect_back fallback_location: root_path
   end
 
   private

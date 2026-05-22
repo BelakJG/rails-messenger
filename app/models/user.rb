@@ -7,9 +7,10 @@ class User < ApplicationRecord
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships, source: :friend
 
-  has_many :inverse_friendship, class_name: "Friendship", foreign_key: "friend_id"
-  has_many :pending_friends, ->(user) {
-    all_added_ids = user.friendships.select(:friend_id)
-    where.not(id: all_added_ids)
-  }, through: :inverse_friendship, source: :user
+  def self.pending_friends(user)
+    incoming = Friendship.where(friend_id: user.id).select(:user_id)
+    outgoing = Friendship.where(user_id: user.id).select(:friend_id)
+
+    User.where(id: incoming).where.not(id: outgoing)
+  end
 end

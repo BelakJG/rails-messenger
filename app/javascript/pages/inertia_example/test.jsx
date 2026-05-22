@@ -10,6 +10,10 @@ export default function Test() {
             friend_id: friend_id
         });
     }
+    const delete_friend = (friend_id) => {
+        router.delete(`/friendships/${friend_id}`);
+    }
+
     function is_friend(friend_id) {
         return auth.user.friends.some(user => user.id === friend_id);
     }
@@ -20,7 +24,7 @@ export default function Test() {
         <p>{user.email}</p>
         {is_pending(user.id) ? <button onClick={() => add_friend(user.id)}>Accept Friend</button>
         : !is_friend(user.id) ? <button onClick={() => add_friend(user.id)}>Add Friend</button>
-        : <button>Remove Friend</button>}
+        : <button onClick={() => delete_friend(user.id)}>Remove Friend</button>}
     </div>);
     return(<div id="test-content">{other_users}</div>);
 }

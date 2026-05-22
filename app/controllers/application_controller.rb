@@ -17,7 +17,8 @@ class ApplicationController < ActionController::Base
         user: current_user ?
         {
           id: current_user.id,
-          email: current_user.email
+          email: current_user.email,
+          friends: current_user.friends
         } : nil
       }
     }

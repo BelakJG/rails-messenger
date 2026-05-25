@@ -28,11 +28,13 @@ export default function DMs({ auth, messages, other_user }) {
             {message_elements}
         </div>
         <form onSubmit={submit}>
-            <input type="textarea" 
+            <textarea 
                 value={data.messages.body} 
                 onChange={(e) => setData("messages", {...data.messages, body: e.target.value})} 
                 className={errors.body && "error"} 
-                placeholder={errors.body ? `Error: ${errors.body}` : "Message text"}></input>
+                placeholder={errors.body ? `Error: ${errors.body}` : "Message text"}
+                rows={6}
+                cols={50}></textarea>
             <button type="submit" disabled={processing}>Send</button>
         </form>
     </div>);

@@ -8,6 +8,7 @@
     gap: 8px;
 
     #messages {
+        height: 80%;
         width: 50%;
         background-color: white;
         padding: 16px;
@@ -22,6 +23,8 @@
             padding: 4px 16px;
             border-radius: 16px;
             border: 2px solid grey;
+            max-width: 80%;
+            overflow-wrap: break-word;
 
             &.sent {
                 align-self: flex-end;

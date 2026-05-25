@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
   root "inertia_example#index"
   get "inertia-example", to: "inertia_example#index"
-  get "friends", to: "inertia_example#friends"
+  get "users", to: "inertia_example#users"
   get "messages/:user_id", to: "messages#user_messages"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -1,6 +1,6 @@
 import { router } from "@inertiajs/react";
 import MainLayout from "../layouts/main_layout";
-import "./friends.css";
+import "./users.css";
 
 export default function Friends({auth, users}) {
 

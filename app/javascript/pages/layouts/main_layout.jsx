@@ -46,7 +46,7 @@ export default function MainLayout({ children }) {
             fontWeight: "bolder",
           }}
         >
-          <Link href="/friends">Friends</Link>
+          <Link href="/users">Users</Link>
           <Link href="/">Home</Link>
           <button onClick={logout}>Logout</button>
         </nav>

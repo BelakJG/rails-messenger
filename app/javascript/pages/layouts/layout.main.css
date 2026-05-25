@@ -9,7 +9,7 @@ main {
         min-width: 50px;
         height: 100%;
         background-color: lightgray;
-        box-shadow: inset 0 0 5px 0 grey;
+        box-shadow: inset 0 0 5px 0 lightgrey;
         padding: 8px;
         display: flex;
         flex-direction: column;
@@ -18,6 +18,7 @@ main {
     
         .user-profile {
             position: relative;
+            filter: drop-shadow(0 0 3px black);
             img {
                 width: 50px;
             }

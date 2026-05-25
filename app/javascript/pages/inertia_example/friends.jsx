@@ -1,8 +1,8 @@
 import { usePage, router } from "@inertiajs/react";
 import MainLayout from "../layouts/main_layout";
-import "./test.css";
+import "./friends.css";
 
-export default function Test() {
+export default function Friends() {
     const {auth, users} = usePage().props;
 
     const add_friend = (friend_id) => {
@@ -29,4 +29,4 @@ export default function Test() {
     return(<div id="test-content">{other_users}</div>);
 }
 
-Test.layout = (page) => <MainLayout children={page} />
+Friends.layout = (page) => <MainLayout children={page} />

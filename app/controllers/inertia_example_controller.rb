@@ -12,8 +12,8 @@ class InertiaExampleController < InertiaController
     }
   end
 
-  def test
-    render inertia: "inertia_example/test", props: {
+  def friends
+    render inertia: "inertia_example/friends", props: {
       users: User.where.not(id: current_user.id)
     }
   end

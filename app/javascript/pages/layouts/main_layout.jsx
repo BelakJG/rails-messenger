@@ -28,10 +28,10 @@ export default function MainLayout({ children }) {
   }
 
   const {auth} = usePage().props
-  const user_friends = auth.user.friends.map((friend) => <div className="user-profile" key={friend.id}>
+  const user_friends = auth.user.friends.map((friend) => <Link className="user-profile" key={friend.id} href={`/messages/${friend.id}`}>
     <img src={default_profile} />
     <p>{friend.email.charAt(0).toUpperCase()}</p>
-  </div>)
+  </Link>)
 
   return (
     <>
@@ -46,7 +46,7 @@ export default function MainLayout({ children }) {
             fontWeight: "bolder",
           }}
         >
-          <Link href="friends">Friends</Link>
+          <Link href="/friends">Friends</Link>
           <Link href="/">Home</Link>
           <button onClick={logout}>Logout</button>
         </nav>

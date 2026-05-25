@@ -12,9 +12,16 @@ class MessagesController < ApplicationController
   end
 
   def create
-    message = current_user.sent_messages.create!(message_params)
+    message = current_user.sent_messages.build(message_params)
 
-    redirect_back fallback_location: "/messages/#{params[:receiver_id]}"
+    if message.save
+      redirect_back fallback_location: "/messages/#{params[:receiver_id]}"
+    else
+      redirect_back fallback_location: "/messages/#{params[:receiver_id]}",
+                    inertia: {
+                      errors: message.errors
+                    }
+    end
   end
 
   private

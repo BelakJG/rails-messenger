@@ -10,5 +10,5 @@ class Message < ApplicationRecord
   scope :from_user, ->(user_id) { where(sender_id: user_id) }
   scope :between_users, ->(user_1_id, user_2_id) { where(receiver_id: user_1_id, sender_id: user_2_id)
                                                     .or(where(receiver_id: user_2_id, sender_id: user_1_id))
-                                                    .order(created_at: :asc) }
+                                                    .order(created_at: :desc) }
 end

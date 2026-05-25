@@ -17,7 +17,9 @@ export default function DMs({ auth, messages, other_user }) {
         });
     }
 
-    const message_elements = messages.map((message) => <p className={message.sender_id === auth.user.id ? "sent" : "received"}>{message.body}</p>);
+    const message_elements = messages.length > 0 
+        ? messages.map((message) => <p key={message.id} className={message.sender_id === auth.user.id ? "sent" : "received"}>{message.body}</p>)
+        : "No Messages yet! :(";
 
     return(<div id="user-messages">
         <Head title={`${other_user.email}`} />
@@ -26,8 +28,11 @@ export default function DMs({ auth, messages, other_user }) {
             {message_elements}
         </div>
         <form onSubmit={submit}>
-            <input type="textarea" value={data.messages.body} onChange={(e) => setData("messages", {...data.messages, body: e.target.value})} ></input>
-            {errors.body && <div>{errors.body}</div>}
+            <input type="textarea" 
+                value={data.messages.body} 
+                onChange={(e) => setData("messages", {...data.messages, body: e.target.value})} 
+                className={errors.body && "error"} 
+                placeholder={errors.body ? `Error: ${errors.body}` : "Message text"}></input>
             <button type="submit" disabled={processing}>Send</button>
         </form>
     </div>);

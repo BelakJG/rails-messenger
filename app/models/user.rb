@@ -7,8 +7,8 @@ class User < ApplicationRecord
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships, source: :friend
 
-  has_many :received_messages, class_name: "Message", foreign_key: "receiver_id"
-  has_many :sent_messages, class_name: "Message", foreign_key: "sender_id"
+  has_many :received_messages, class_name: "Message", foreign_key: "receiver_id", dependent: :destroy
+  has_many :sent_messages, class_name: "Message", foreign_key: "sender_id", dependent: :destroy
 
   def self.pending_friends(user)
     incoming = Friendship.where(friend_id: user.id).select(:user_id)

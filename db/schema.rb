@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_22_163809) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_25_151514) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -22,6 +22,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_22_163809) do
     t.index ["friend_id"], name: "index_friendships_on_friend_id"
     t.index ["user_id", "friend_id"], name: "index_friendships_on_user_id_and_friend_id", unique: true
     t.index ["user_id"], name: "index_friendships_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "body", null: false
+    t.datetime "created_at", null: false
+    t.bigint "receiver_id", null: false
+    t.bigint "sender_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["receiver_id"], name: "index_messages_on_receiver_id"
+    t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -38,4 +48,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_22_163809) do
 
   add_foreign_key "friendships", "users"
   add_foreign_key "friendships", "users", column: "friend_id"
+  add_foreign_key "messages", "users", column: "receiver_id"
+  add_foreign_key "messages", "users", column: "sender_id"
 end

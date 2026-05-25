@@ -1,9 +1,8 @@
-import { usePage, router } from "@inertiajs/react";
+import { router } from "@inertiajs/react";
 import MainLayout from "../layouts/main_layout";
 import "./friends.css";
 
-export default function Friends() {
-    const {auth, users} = usePage().props;
+export default function Friends({auth, users}) {
 
     const add_friend = (friend_id) => {
         router.post("/friendships", {

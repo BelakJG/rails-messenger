@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   root "inertia_example#index"
   get "inertia-example", to: "inertia_example#index"
   get "friends", to: "inertia_example#friends"
+  get "messages/:user_id", to: "messages#user_messages"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

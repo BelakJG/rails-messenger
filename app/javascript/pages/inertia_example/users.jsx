@@ -1,4 +1,4 @@
-import { router } from "@inertiajs/react";
+import { router, Head } from "@inertiajs/react";
 import MainLayout from "../layouts/main_layout";
 import "./users.css";
 
@@ -25,7 +25,10 @@ export default function Friends({auth, users}) {
         : !is_friend(user.id) ? <button onClick={() => add_friend(user.id)}>Add Friend</button>
         : <button onClick={() => delete_friend(user.id)}>Remove Friend</button>}
     </div>);
-    return(<div id="test-content">{other_users}</div>);
+    return(<div id="test-content">
+        <Head title="Users" />
+        {other_users}
+    </div>);
 }
 
 Friends.layout = (page) => <MainLayout children={page} />

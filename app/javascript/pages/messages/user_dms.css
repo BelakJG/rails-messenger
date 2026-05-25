@@ -1,0 +1,61 @@
+#user-messages {
+    background-color: lightgoldenrodyellow;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+
+    #messages {
+        width: 50%;
+        background-color: white;
+        padding: 16px;
+        border-radius: 8px;
+        border: 2px solid lightgrey;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto;
+        row-gap: 8px;
+        overflow: scroll;
+
+        p {
+            padding: 4px 16px;
+            border-radius: 16px;
+            border: 2px solid grey;
+
+            &.sent {
+                justify-self: right;
+                background-color: lightcyan;
+            }
+            &.received {
+                justify-self: left;
+                background-color: color-mix(in srgb, lightgrey 100%, white 50%);
+            }
+        }
+    }
+
+    form {
+        display: flex;
+        gap: 8px;
+        input {
+            background-color: white;
+            border: 2px solid grey;
+            padding: 4px;
+            border-radius: 8px;
+        }
+        button {
+            background-color: lightgrey;
+            padding: 4px;
+            border-radius: 8px;
+            border: 1px solid black;
+
+            &:hover {
+                background-color: color-mix(in srgb, lightgrey 100%, white 25%);
+            }
+            &:active {
+                background-color: color-mix(in srgb, lightgrey 100%, white 50%);
+            }
+        }
+    }
+}

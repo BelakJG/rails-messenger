@@ -10,10 +10,31 @@ class User < ApplicationRecord
   has_many :received_messages, class_name: "Message", foreign_key: "receiver_id", dependent: :destroy
   has_many :sent_messages, class_name: "Message", foreign_key: "sender_id", dependent: :destroy
 
-  def self.pending_friends(user)
-    incoming = Friendship.where(friend_id: user.id).select(:user_id)
-    outgoing = Friendship.where(user_id: user.id).select(:friend_id)
+  scope :incoming_friend_requests, ->(user_id) {
+    incoming = Friendship.where(friend_id: user_id).select(:user_id)
+    outgoing = Friendship.where(user_id: user_id).select(:friend_id)
 
-    User.where(id: incoming).where.not(id: outgoing)
-  end
+    where(id: incoming).where.not(id: outgoing)
+  }
+
+  scope :pending_outgoing_friend_requests, ->(user_id) {
+    outgoing = Friendship.where(user_id: user_id).select(:friend_id)
+    incoming = Friendship.where(friend_id: user_id).select(:user_id)
+
+    where(id: outgoing).where.not(id: incoming)
+  }
+
+  scope :accepted_friends, ->(user_id) {
+    outgoing = Friendship.where(user_id: user_id).select(:friend_id)
+    incoming = Friendship.where(friend_id: user_id).select(:user_id)
+
+    where(id: outgoing).where(id: incoming)
+  }
+
+  scope :users_no_requests, ->(user_id) {
+    outgoing = Friendship.where(user_id: user_id).select(:friend_id)
+    incoming = Friendship.where(friend_id: user_id).select(:user_id)
+
+    where.not(id: user_id).where.not(id: outgoing).where.not(id: incoming)
+  }
 end

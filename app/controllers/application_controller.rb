@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
           id: current_user.id,
           email: current_user.email,
           friends: current_user.friends,
-          pending: User.pending_friends(current_user)
+          pending: User.incoming_friend_requests(current_user)
         } : nil
       }
     }

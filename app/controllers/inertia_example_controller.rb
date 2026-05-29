@@ -14,7 +14,10 @@ class InertiaExampleController < InertiaController
 
   def users
     render inertia: "inertia_example/users", props: {
-      users: User.where.not(id: current_user.id)
+      friends: User.accepted_friends(current_user.id),
+      incoming_friend_requests: User.incoming_friend_requests(current_user.id),
+      outgoing_friend_requests: User.pending_outgoing_friend_requests(current_user.id),
+      users_no_requests: User.users_no_requests(current_user.id)
     }
   end
 end

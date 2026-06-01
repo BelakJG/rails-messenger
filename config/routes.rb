@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   constraints(host: "127.0.0.1") do
     get "(*path)", to: redirect { |params, req| "#{req.protocol}localhost:#{req.port}/#{params[:path]}" }
   end
-  root "inertia_example#index"
+  root "homepage#home"
   get "inertia-example", to: "inertia_example#index"
   get "users", to: "inertia_example#users"
   get "messages/:user_id", to: "messages#user_messages"

@@ -16,8 +16,13 @@ html, body {
 }
 
 h1 {
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: bolder;
+}
+
+h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 
 p {

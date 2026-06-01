@@ -45,7 +45,7 @@
             background-color: color-mix(in srgb, white, lightgrey 35%);
         }
         button:active {
-            background-color: color-mix(in srgb, white, lightgrey 80%);
+            background-color: color-mix(in srgb, white, grey 50%);
         }
     }
 }

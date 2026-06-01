@@ -36,16 +36,7 @@ export default function MainLayout({ children }) {
   return (
     <>
       <header style={{ backgroundColor: "rebeccapurple" }}>
-        <nav
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-around",
-            color: "white",
-            fontSize: "1.5rem",
-            fontWeight: "bolder",
-          }}
-        >
+        <nav>
           <Link href="/users">Users</Link>
           <Link href="/">Home</Link>
           <button onClick={logout}>Logout</button>

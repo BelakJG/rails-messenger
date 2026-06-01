@@ -1,3 +1,25 @@
+header {
+    nav {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: white;
+        font-weight: bold;
+        font-size: 1.5rem;
+
+
+        a, button {
+            padding: 4px 0;
+            flex-grow: 1;
+        }
+
+        a:hover, button:hover {
+            cursor: pointer;
+            background-color: color-mix(in srgb, rebeccapurple 100%, white 25%);
+        }
+    }
+}
+
 main {
     display: flex;
     height: 100%;

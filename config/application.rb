@@ -23,5 +23,6 @@ module RailsMessenger
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.active_record.table_name_prefix = "app_messenger_"
   end
 end

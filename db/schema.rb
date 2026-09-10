@@ -19,9 +19,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_25_151514) do
     t.bigint "friend_id", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
-    t.index ["friend_id"], name: "index_friendships_on_friend_id"
-    t.index ["user_id", "friend_id"], name: "index_friendships_on_user_id_and_friend_id", unique: true
-    t.index ["user_id"], name: "index_friendships_on_user_id"
+    t.index ["friend_id"], name: "index_app_messenger_friendships_on_friend_id"
+    t.index ["user_id", "friend_id"], name: "index_app_messenger_friendships_on_user_id_and_friend_id", unique: true
+    t.index ["user_id"], name: "index_app_messenger_friendships_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -30,8 +30,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_25_151514) do
     t.bigint "receiver_id", null: false
     t.bigint "sender_id", null: false
     t.datetime "updated_at", null: false
-    t.index ["receiver_id"], name: "index_messages_on_receiver_id"
-    t.index ["sender_id"], name: "index_messages_on_sender_id"
+    t.index ["receiver_id"], name: "index_app_messenger_messages_on_receiver_id"
+    t.index ["sender_id"], name: "index_app_messenger_messages_on_sender_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -42,8 +42,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_25_151514) do
     t.datetime "reset_password_sent_at"
     t.string "reset_password_token"
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["email"], name: "index_app_messenger_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_app_messenger_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "friendships", "users"
